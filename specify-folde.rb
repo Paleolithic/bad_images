@@ -56,6 +56,26 @@ def checker(mf, tlf, x)
         end
 end
 
+
+if ARGV.length == 0 || ARGV.length > 1
+        puts "Needs an argument to general timelapse folder or specific date folder. Give argument -h for help/information."
+        exit 0
+elsif ARGV[0] == '-h'
+        puts "specify-folder.rb"
+        puts "Written by Thomas Boyle for the Research Computing Department at the"
+        puts "Rochester Institute of Technology.\n"
+        puts "This script takes one argument, the absolute path to the folder in which you want to begin frame checking. "
+        puts "Example: 'ruby specify-folder.rb /mnt/icelab-timelapse/SAU-timelapse-daily'"
+        puts "This script checks recursively, meaning that you can specify either the general"
+        puts "timelapse folder, with each individual day included inside, OR you can specify a specific day within the general timelapse folder."
+        puts "Either way it will create necessary folders (in '/home/user/Documents/tl_files') and run properly."
+
+        exit 0
+elsif ARGV[0].chars.first != '/'
+        puts "Needs to be an absolute path to folder. Give argument -h for help/information."
+        exit 0
+end
+
 Dir.chdir(ARGV[0])
 puts Dir.pwd
 
